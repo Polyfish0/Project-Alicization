@@ -57,7 +57,7 @@
     },
     "com.unity.subsystemregistration": {
       "version": "1.0.6",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -106,8 +106,8 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.management": {
-      "version": "3.2.13",
-      "depth": 1,
+      "version": "3.2.16",
+      "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.xr.legacyinputhelpers": "2.1.2",

@@ -2,12 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class VolumeSettings : MonoBehaviour
 {
     public Transform knob;
     public Transform start;
     public Transform end;
+    public AudioMixer audioMixer;
     public float volume;
 
     private Vector3 lastPos;
@@ -16,29 +18,32 @@ public class VolumeSettings : MonoBehaviour
 
     private void Start()
     {
-        lastPos = knob.position;
-        abstand = distance(end.position, start.position);
+        abstand = end.position.x - start.position.x;
         einProzent = abstand / 100;
+
+        float currentVolume;
+        audioMixer.GetFloat("MasterVolume", out currentVolume);
+        float distanceToStart = (currentVolume + 80) * einProzent;
+        knob.position = new Vector3(start.position.x + distanceToStart, start.position.y, start.position.z);
+
+        lastPos = new Vector3((int)knob.position.x, (int)knob.position.y, (int)knob.position.z);
     }
 
     void FixedUpdate()
     {
-        if (knob.position != lastPos)
+        if (new Vector3((int)knob.position.x, (int)knob.position.y, (int)knob.position.z) != lastPos)
         {
-            lastPos = knob.position;
-            float distanceToStart = distance(knob.position, start.position);
+            lastPos = new Vector3((int)knob.position.x, (int)knob.position.y, (int)knob.position.z);
+            float distanceToStart = knob.position.x - start.position.x;
             volume = distanceToStart / einProzent;
             Debug.Log(volume);
+            float decibel = volume - 80;
+            SetVolume(decibel);
         }
     }
 
-    float distance(Vector3 a, Vector3 b)
+    void SetVolume(float decibel)
     {
-        Vector3 VerbindungsVector = b - a;
-        double x = Math.Pow(VerbindungsVector.x, 2);
-        double y = Math.Pow(VerbindungsVector.y, 2);
-        double z = Math.Pow(VerbindungsVector.z, 2);
-        float distance = (float)Math.Sqrt(x + y + z);
-        return distance;
+        audioMixer.SetFloat("MasterVolume", decibel);
     }
 }

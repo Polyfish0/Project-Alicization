@@ -3518,6 +3518,7 @@ MonoBehaviour:
   knob: {fileID: 1579283119}
   start: {fileID: 990704331}
   end: {fileID: 789728017}
+  audioMixer: {fileID: 24100000, guid: ec12f7772c03e4c4c9e4c2f1643595ad, type: 2}
   volume: 0
 --- !u!1 &1575402685
 GameObject:
@@ -3825,7 +3826,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1575402685}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.5, y: 1, z: -7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4235,7 +4236,7 @@ MonoBehaviour:
   endPosition: {fileID: 789728017}
   linearMapping: {fileID: 1579283125}
   repositionGameObject: 1
-  maintainMomemntum: 1
+  maintainMomemntum: 0
   momemtumDampenRate: 5
 --- !u!43 &1589153262
 Mesh:
@@ -4610,7 +4611,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1832670420
 AudioListener:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class VolumeSettings : MonoBehaviour
     public Transform start;
     public Transform end;
     public AudioMixer audioMixer;
-    public float volume;
+    public int volume;
 
     private Vector3 lastPos;
     private float abstand;
@@ -26,16 +26,16 @@ public class VolumeSettings : MonoBehaviour
         float distanceToStart = (currentVolume + 80) * einProzent;
         knob.position = new Vector3(start.position.x + distanceToStart, start.position.y, start.position.z);
 
-        lastPos = new Vector3((int)knob.position.x, (int)knob.position.y, (int)knob.position.z);
+        lastPos = new Vector3(knob.position.x, knob.position.y, knob.position.z);
     }
 
     void FixedUpdate()
     {
-        if (new Vector3((int)knob.position.x, (int)knob.position.y, (int)knob.position.z) != lastPos)
+        if (new Vector3(knob.position.x, knob.position.y, knob.position.z) != lastPos)
         {
-            lastPos = new Vector3((int)knob.position.x, (int)knob.position.y, (int)knob.position.z);
+            lastPos = new Vector3(knob.position.x, knob.position.y, knob.position.z);
             float distanceToStart = knob.position.x - start.position.x;
-            volume = distanceToStart / einProzent;
+            volume = (int)(distanceToStart / einProzent);
             Debug.Log(volume);
             float decibel = volume - 80;
             SetVolume(decibel);

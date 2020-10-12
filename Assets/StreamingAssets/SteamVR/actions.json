@@ -50,6 +50,11 @@
       "type": "boolean"
     },
     {
+      "name": "/actions/default/in/ThumbstickLeftMove",
+      "type": "vector2",
+      "requirement": "mandatory"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },

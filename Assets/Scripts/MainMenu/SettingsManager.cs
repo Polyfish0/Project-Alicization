@@ -7,12 +7,12 @@ public class SettingsManager : MonoBehaviour
     public GameObject volumeSettings;
     public GameObject debugButton2;
 
-    private List<GameObject> allSettings;
+    private List<GameObject> allSettings = new List<GameObject>();
 
     private void Start()
     {
-        allSettings.Add(volumeSettings);
         allSettings.Add(debugButton2);
+        allSettings.Add(volumeSettings);
     }
 
     private void activateSetting(GameObject settingToActivate)

@@ -12,6 +12,7 @@ public class SettingsManager : MonoBehaviour
     private void Start()
     {
         allSettings.Add(volumeSettings);
+        allSettings.Add(debugButton2);
     }
 
     private void activateSetting(GameObject settingToActivate)

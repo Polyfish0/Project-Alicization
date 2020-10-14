@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class VolumeSettings : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class VolumeSettings : MonoBehaviour
     public Transform start;
     public Transform end;
     public AudioMixer audioMixer;
+    public Text volumePanel;
     public int volume;
 
     private Vector3 lastPos;
@@ -23,6 +25,7 @@ public class VolumeSettings : MonoBehaviour
 
         float currentVolume;
         audioMixer.GetFloat("MasterVolume", out currentVolume);
+        volumePanel.text = (currentVolume + 80) + "%";
         float distanceToStart = (currentVolume + 80) * einProzent;
         knob.position = new Vector3(start.position.x + distanceToStart, start.position.y, start.position.z);
 
@@ -36,7 +39,7 @@ public class VolumeSettings : MonoBehaviour
             lastPos = new Vector3(knob.position.x, knob.position.y, knob.position.z);
             float distanceToStart = knob.position.x - start.position.x;
             volume = (int)(distanceToStart / einProzent);
-            Debug.Log(volume);
+            volumePanel.text = volume + "%";
             float decibel = volume - 80;
             SetVolume(decibel);
         }
